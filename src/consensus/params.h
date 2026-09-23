@@ -81,6 +81,12 @@ struct Params {
     bool fStrictChainId;
     bool fAllowLegacyBlocks;
 
+    /** 4547 parameters (0 = disabled, so testnet/regtest keep Dogecoin behaviour) */
+    int nSlowStartBlocks = 0;       // reward ramps linearly from 0 over this many blocks
+    int nBonusBlockInterval = 0;    // every Nth block is a bonus block (4547)
+    int nBonusBlockMultiplier = 1;  // bonus block pays this multiple of the normal reward (47)
+    int64_t nLwmaWindow = 0;        // LWMA difficulty averaging window in blocks (45)
+
     /** Height-aware consensus parameters */
     uint32_t nHeightEffective; // When these parameters come into use
     struct Params *pLeft = nullptr;      // Left hand branch

@@ -126,26 +126,23 @@ bool CheckAuxPowProofOfWork(const CBlockHeader& block, const Consensus::Params& 
 
 CAmount GetDogecoinBlockSubsidy(int nHeight, const Consensus::Params& consensusParams, uint256 prevHash)
 {
+    // 4547: 0.0495 per block, halving every nSubsidyHalvingInterval (45,470) blocks.
+    const CAmount nBaseReward = 4950000; // 0.04950000
     int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+    if (halvings >= 63)
+        return 0;
+    CAmount nSubsidy = nBaseReward >> halvings;
 
-    if (!consensusParams.fSimplifiedRewards)
-    {
-        // Old-style rewards derived from the previous block hash
-        const std::string cseed_str = prevHash.ToString().substr(7, 7);
-        const char* cseed = cseed_str.c_str();
-        char* endp = NULL;
-        long seed = strtol(cseed, &endp, 16);
-        CAmount maxReward = (1000000 >> halvings) - 1;
-        int rand = generateMTRandom(seed, maxReward);
+    // Slow start: linear ramp from 0 over the first nSlowStartBlocks blocks.
+    if (consensusParams.nSlowStartBlocks > 0 && nHeight < consensusParams.nSlowStartBlocks)
+        nSubsidy = (nSubsidy * nHeight) / consensusParams.nSlowStartBlocks;
 
-        return (1 + rand) * COIN;
-    } else if (nHeight < (6 * consensusParams.nSubsidyHalvingInterval)) {
-        // New-style constant rewards for each halving interval
-        return (500000 * COIN) >> halvings;
-    } else {
-        // Constant inflation
-        return 10000 * COIN;
-    }
+    // 4547 Block: every nBonusBlockInterval-th block pays nBonusBlockMultiplier x.
+    if (consensusParams.nBonusBlockInterval > 0 && nHeight > 0 &&
+        nHeight % consensusParams.nBonusBlockInterval == 0)
+        nSubsidy *= consensusParams.nBonusBlockMultiplier;
+
+    return nSubsidy;
 }
 
 
