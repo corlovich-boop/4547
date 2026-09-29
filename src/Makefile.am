@@ -66,11 +66,11 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += dogecoind
+  bin_PROGRAMS += 4547d
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += dogecoin-cli dogecoin-tx
+  bin_PROGRAMS += 4547-cli 4547-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
@@ -383,16 +383,16 @@ nodist_libdogecoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-dogecoind_SOURCES = bitcoind.cpp
-dogecoind_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-dogecoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-dogecoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+4547d_SOURCES = bitcoind.cpp
+4547d_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+4547d_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+4547d_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dogecoind_SOURCES += bitcoind-res.rc
+4547d_SOURCES += bitcoind-res.rc
 endif
 
-dogecoind_LDADD = \
+4547d_LDADD = \
   $(LIBDOGECOIN_SERVER) \
   $(LIBDOGECOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -405,38 +405,38 @@ dogecoind_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-dogecoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+4547d_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
 # bitcoin-cli binary #
-dogecoin_cli_SOURCES = bitcoin-cli.cpp
-dogecoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-dogecoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-dogecoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+4547_cli_SOURCES = bitcoin-cli.cpp
+4547_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+4547_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+4547_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dogecoin_cli_SOURCES += bitcoin-cli-res.rc
+4547_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
-dogecoin_cli_LDADD = \
+4547_cli_LDADD = \
   $(LIBDOGECOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBDOGECOIN_UTIL) \
   $(LIBDOGECOIN_CRYPTO)
 
-dogecoin_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+4547_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
 # bitcoin-tx binary #
-dogecoin_tx_SOURCES = bitcoin-tx.cpp
-dogecoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-dogecoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-dogecoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+4547_tx_SOURCES = bitcoin-tx.cpp
+4547_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+4547_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+4547_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dogecoin_tx_SOURCES += bitcoin-tx-res.rc
+4547_tx_SOURCES += bitcoin-tx-res.rc
 endif
 
-dogecoin_tx_LDADD = \
+4547_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBDOGECOIN_COMMON) \
   $(LIBDOGECOIN_UTIL) \
@@ -444,7 +444,7 @@ dogecoin_tx_LDADD = \
   $(LIBDOGECOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-dogecoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+4547_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoinconsensus library #

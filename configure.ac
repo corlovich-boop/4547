@@ -7,19 +7,19 @@ define(_CLIENT_VERSION_BUILD, 0)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2024)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core and Dogecoin Core]])
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core, Dogecoin Core and 4547]])
 define(_CURRENT_RELEASE_DATE,[[2024-12-01]])
 define(_EXPECTED_DAYS_TO_NEXT_RELEASE,[270])
-AC_INIT([Dogecoin Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/dogecoin/dogecoin/issues],[dogecoin],[https://dogecoin.com/])
+AC_INIT([4547 Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/corlovich-boop/4547/issues],[4547],[https://4547coin.net/])
 AC_CONFIG_SRCDIR([src/validation.cpp])
 AC_CONFIG_HEADERS([src/config/bitcoin-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
-BITCOIN_DAEMON_NAME=dogecoind
-BITCOIN_GUI_NAME=dogecoin-qt
-BITCOIN_CLI_NAME=dogecoin-cli
-BITCOIN_TX_NAME=dogecoin-tx
+BITCOIN_DAEMON_NAME=4547d
+BITCOIN_GUI_NAME=4547-qt
+BITCOIN_CLI_NAME=4547-cli
+BITCOIN_TX_NAME=4547-tx
 
 AC_CANONICAL_HOST
 

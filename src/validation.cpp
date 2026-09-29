@@ -99,7 +99,7 @@ static void CheckBlockIndex(const Consensus::Params& consensusParams);
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const std::string strMessageMagic = "Dogecoin Signed Message:\n";
+const std::string strMessageMagic = "4547 Signed Message:\n";
 
 // Internal stuff
 namespace {
