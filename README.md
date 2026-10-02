@@ -1,105 +1,86 @@
-<h1 align="center">
-<img src="https://static.tumblr.com/ppdj5y9/Ae9mxmxtp/300coin.png" alt="Dogecoin" width="300"/>
-<br/><br/>
-Dogecoin Core [DOGE, Ð]  
-</h1>
+# 4547
 
-<div align="center">
+**45 came first. 47 came back. 4547 begins.**
 
-[![DogecoinBadge](https://img.shields.io/badge/Doge-Coin-yellow.svg)](https://dogecoin.com)
-[![MuchWow](https://img.shields.io/badge/Much-Wow-yellow.svg)](https://dogecoin.com)
+4547 is a mineable Scrypt coin with a hard cap of **4,547 coins**. It is a fork of Dogecoin Core 1.14.9 (MIT license), with every consensus parameter built from the numbers 45 and 47, for the 45th and 47th US presidencies.
 
-</div>
+- Website: https://4547coin.net
+- Explorer: https://explorer.4547coin.net (live after launch)
+- **Mining opens Tuesday, October 27, 2026 at 12:00:00 UTC**
 
-Select language: EN | [CN](./README_zh_CN.md) | [PT](./README_pt_BR.md) | [FA](./README_fa_IR.md) | [VI](./README_vi_VN.md)
+> 4547 is experimental open-source software provided as is, with no warranty. Nothing here is investment advice or a promise of value. 4547 is not affiliated with, endorsed by, or connected to any person, campaign, political party, or government. References to presidential numbering are historical.
 
-Dogecoin is a community-driven cryptocurrency that was inspired by a Shiba Inu meme. The Dogecoin Core software allows anyone to operate a node in the Dogecoin blockchain networks and uses the Scrypt hashing method for Proof of Work. It is adapted from Bitcoin Core and other cryptocurrencies.
+## Parameters
 
-For information about the default fees used on the Dogecoin network, please
-refer to the [fee recommendation](doc/fee-recommendation.md).
+| | |
+|---|---|
+| Algorithm | Scrypt (N=1024, r=1, p=1) |
+| Block time | 10 minutes |
+| Max supply | 4,547 (about 4,533.6 actually mined, because of the launch ramp) |
+| Block reward | 0.0495 (reached after a 450-block launch ramp; early blocks pay tiny amounts) |
+| 4547 Block | every block divisible by 4,547 pays 47x the normal reward |
+| Halving | every 45,470 blocks (about 316 days) |
+| Difficulty | LWMA-45, retargets every block over a 45-block window |
+| Coinbase maturity | 47 blocks |
+| Merge mining (AuxPoW) | switches on at block 4,547, chain ID 4547 (0x11C3) |
+| Ports | P2P 4547, RPC 4545 (testnet 14547/14545, regtest 18547/18545) |
+| Address prefix | addresses start with `4` |
+| Network magic | 0x45 0x47 0x45 0x47 |
+| Premine | none |
 
-**Website:** [dogecoin.com](https://dogecoin.com)
+Genesis hash: `400cef90ca67f6a0f85d14d2ec3b1ade5acff17f02043c02f9733c413ee3a273`
+Genesis message: `45 came first. 47 came back. 4547 begins.`
 
-## Usage 💻
+The genesis timestamp is 12:22:30 UTC on launch day, which is exactly the 1,350 s future-time limit, so nodes first accept a block at 12:00:00 UTC. Blocks in the first hour can still be re-organized, so wait for confirmations before trusting early coins.
 
-To start your journey with Dogecoin Core, see the [installation guide](INSTALL.md) and the [getting started](doc/getting-started.md) tutorial.
+## Wallets
 
-The JSON-RPC API provided by Dogecoin Core is self-documenting and can be browsed with `dogecoin-cli help`, while detailed information for each command can be viewed with `dogecoin-cli help <command>`. Alternatively, see the [Bitcoin Core documentation](https://developer.bitcoin.org/reference/rpc/) - which implement a similar protocol - to get a browsable version.
+Download from the [Releases page](RELEASE_LINK_HERE) and **check the SHA256 sum** against `SHA256SUMS-*.txt` before running anything.
 
-### Such ports
+**Windows (64-bit):** unzip `4547-wallet-win64-861063e66.zip` anywhere and run the Qt wallet. Windows SmartScreen may warn about an unrecognized app because the binaries are not code-signed; verify the checksum, then choose "More info" then "Run anyway". Data lives in `%APPDATA%\4547`.
 
-Dogecoin Core by default uses port `22556` for peer-to-peer communication that
-is needed to synchronize the "mainnet" blockchain and stay informed of new
-transactions and blocks. Additionally, a JSONRPC port can be opened, which
-defaults to port `22555` for mainnet nodes. It is strongly recommended to not
-expose RPC ports to the public internet.
+**Linux (x86_64):** unpack `4547-wallet-linux-x86_64-861063e66.tar.gz`. It contains `4547d` and `4547-cli` (headless node and RPC client).
 
-| Function | mainnet | testnet | regtest |
-| :------- | ------: | ------: | ------: |
-| P2P      |   22556 |   44556 |   18444 |
-| RPC      |   22555 |   44555 |   18332 |
+Back up your `wallet.dat` and keep it somewhere safe. Nobody can recover your coins for you.
 
-## Ongoing development - Moon plan 🌒
+## Run a node
 
-Dogecoin Core is an open source and community driven software. The development
-process is open and publicly visible; anyone can see, discuss and work on the
-software.
+```
+4547d -daemon
+4547-cli getblockcount
+```
 
-Main development resources:
+Seeds are built in: `seed1.4547coin.net` and `seed2.4547coin.net` (port 4547). To add one by hand: `addnode=seed1.4547coin.net:4547` in `4547.conf`.
 
-* [GitHub Projects](https://github.com/dogecoin/dogecoin/projects) is used to
-  follow planned and in-progress work for upcoming releases.
-* [GitHub Discussion](https://github.com/dogecoin/dogecoin/discussions) is used
-  to discuss features, planned and unplanned, related to both the development of
-  the Dogecoin Core software, the underlying protocols and the DOGE asset.  
-* [Dogecoindev subreddit](https://www.reddit.com/r/dogecoindev/)
+## Mining
 
-### Version strategy
-Version numbers are following ```major.minor.patch``` semantics.
+Mine with any Scrypt ASIC (the same hardware that mines Litecoin and Dogecoin).
 
-### Branches
-There are 3 types of branches in this repository:
+- Pool: `stratum+tcp://STRATUM_ADDRESS:3333` (1% fee, payouts after 55 confirmations)
+- Username: your 4547 address (starts with `4`), optionally `.workername`
+- Password: anything
 
-- **master:** Stable, contains the latest version of the latest *major.minor* release.
-- **maintenance:** Stable, contains the latest version of previous releases, which are still under active maintenance. Format: ```<version>-maint```
-- **development:** Unstable, contains new code for planned releases. Format: ```<version>-dev```
+Solo mining works too through `getblocktemplate` against your own node.
 
-*Master and maintenance branches are exclusively mutable by release. Planned*
-*releases will always have a development branch and pull requests should be*
-*submitted against those. Maintenance branches are there for **bug fixes only,***
-*please submit new features against the development branch with the highest version.*
+## Build from source
 
-## Contributing 🤝
+Standard Dogecoin Core 1.14.x build process:
 
-If you find a bug or experience issues with this software, please report it
-using the [issue system](https://github.com/dogecoin/dogecoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
+```
+git clone https://github.com/corlovich-boop/4547
+cd 4547
+./autogen.sh
+./configure --without-gui --disable-tests --disable-bench --with-incompatible-bdb
+make -j$(nproc)
+```
 
-Please see [the contribution guide](CONTRIBUTING.md) to see how you can
-participate in the development of Dogecoin Core. There are often
-[topics seeking help](https://github.com/dogecoin/dogecoin/labels/help%20wanted)
-where your contributions will have high impact and get very appreciation. wow.
+Verify the chain yourself:
 
-## Communities 🚀🍾
+```
+4547-cli getblockhash 0
+4547-cli getblock $(4547-cli getblockhash 0) 2
+```
 
-You can join the communities on different social media.
-To see what's going on, meet people & discuss, find the latest meme, learn
-about Dogecoin, give or ask for help, to share your project.
+## License
 
-Here are some places to visit:
-
-* [Dogecoin subreddit](https://www.reddit.com/r/dogecoin/)
-* [Dogeducation subreddit](https://www.reddit.com/r/dogeducation/)
-* [Discord](https://discord.gg/dogecoin)
-* [Dogecoin Twitter](https://twitter.com/dogecoin)
-
-## Very Much Frequently Asked Questions ❓
-
-Do you have a question regarding Dogecoin? An answer is perhaps already in the
-[FAQ](doc/FAQ.md) or the
-[Q&A section](https://github.com/dogecoin/dogecoin/discussions/categories/q-a)
-of the discussion board!
-
-## License - Much license ⚖️
-Dogecoin Core is released under the terms of the MIT license. See
-[COPYING](COPYING) for more information or see
-[opensource.org](https://opensource.org/licenses/MIT)
+MIT. Built on Dogecoin Core and Bitcoin Core.
