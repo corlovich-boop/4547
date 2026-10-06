@@ -56,11 +56,12 @@ Seeds are built in: `seed1.4547coin.net` and `seed2.4547coin.net` (port 4547). T
 
 Mine with any Scrypt ASIC (the same hardware that mines Litecoin and Dogecoin).
 
-- Pool: `stratum+tcp://STRATUM_ADDRESS:3333` (1% fee, payouts after 55 confirmations)
+- Shared pool (PPLNS): `stratum+tcp://STRATUM_ADDRESS:3333` (1% fee, payouts after 55 confirmations)
+- Solo pool: `stratum+tcp://STRATUM_ADDRESS:3334` (1% fee, whoever finds a block gets the whole reward)
 - Username: your 4547 address (starts with `4`), optionally `.workername`
 - Password: anything
 
-Solo mining works too through `getblocktemplate` against your own node.
+You can also solo mine against your own node through `getblocktemplate`.
 
 ## Build from source
 
