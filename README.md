@@ -6,6 +6,7 @@
 
 - Website: https://4547coin.net
 - Explorer: https://explorer.4547coin.net (live after launch)
+- Litepaper: [LITEPAPER.md](LITEPAPER.md)
 - **Mining opens Tuesday, October 27, 2026 at 12:00:00 UTC**
 
 > 4547 is experimental open-source software provided as is, with no warranty. Nothing here is investment advice or a promise of value. 4547 is not affiliated with, endorsed by, or connected to any person, campaign, political party, or government. References to presidential numbering are historical.
