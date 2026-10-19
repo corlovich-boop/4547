@@ -35,7 +35,7 @@ The genesis timestamp is 12:22:30 UTC on launch day, which is exactly the 1,350 
 
 ## Wallets
 
-Download from the [Releases page](RELEASE_LINK_HERE) and **check the SHA256 sum** against `SHA256SUMS-*.txt` before running anything.
+Download from the [Releases page](https://github.com/corlovich-boop/4547/releases/latest) and **check the SHA256 sum** against `SHA256SUMS-*.txt` before running anything.
 
 **Windows (64-bit):** unzip `4547-wallet-win64-861063e66.zip` anywhere and run the Qt wallet. Windows SmartScreen may warn about an unrecognized app because the binaries are not code-signed; verify the checksum, then choose "More info" then "Run anyway". Data lives in `%APPDATA%\4547`.
 
@@ -56,8 +56,8 @@ Seeds are built in: `seed1.4547coin.net` and `seed2.4547coin.net` (port 4547). T
 
 Mine with any Scrypt ASIC (the same hardware that mines Litecoin and Dogecoin).
 
-- Shared pool (PPLNS): `stratum+tcp://STRATUM_ADDRESS:3333` (1% fee, payouts after 55 confirmations)
-- Solo pool: `stratum+tcp://STRATUM_ADDRESS:3334` (1% fee, whoever finds a block gets the whole reward)
+- Shared pool (PPLNS): `stratum+tcp://pool.4547coin.net:3333` (1% fee, payouts after 55 confirmations)
+- Solo pool: `stratum+tcp://pool.4547coin.net:3334` (1% fee, whoever finds a block gets the whole reward)
 - Username: your 4547 address (starts with `4`), optionally `.workername`
 - Password: anything
 
