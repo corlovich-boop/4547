@@ -40,7 +40,13 @@ Download from the [Releases page](https://github.com/corlovich-boop/4547/release
 
 **Windows (64-bit):** unzip `4547-wallet-win64-861063e66.zip` anywhere and run the Qt wallet. Windows SmartScreen may warn about an unrecognized app because the binaries are not code-signed; verify the checksum, then choose "More info" then "Run anyway". Data lives in `%APPDATA%\4547`.
 
-**Linux (x86_64):** unpack `4547-wallet-linux-x86_64-861063e66.tar.gz`. It contains `4547d` and `4547-cli` (headless node and RPC client).
+**Linux (x86_64):** built and tested on Ubuntu 24.04. Unpack `4547-wallet-linux-x86_64-861063e66.tar.gz`; the programs are in the top folder: `4547d` and `4547-cli` (headless node and RPC client), `4547-tx`, and `4547-qt` (graphical wallet, not yet tested on a full desktop). On Ubuntu 24.04, install the libraries first:
+
+~~~
+sudo apt install libboost-chrono1.83.0t64 libboost-filesystem1.83.0 libboost-program-options1.83.0 libboost-thread1.83.0 libdb5.3++t64 libdbus-1-3 libevent-2.1-7t64 libevent-core-2.1-7t64 libevent-pthreads-2.1-7t64 libminiupnpc17 libprotobuf32t64 libqrencode4 libqt5core5t64 libqt5dbus5t64 libqt5gui5t64 libqt5network5t64 libqt5printsupport5t64 libqt5widgets5t64 libssl3t64 libzmq5
+~~~
+
+On older or other distributions these library versions may not exist; build from source (below) instead.
 
 Back up your `wallet.dat` and keep it somewhere safe. Nobody can recover your coins for you.
 
